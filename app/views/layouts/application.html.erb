@@ -9,31 +9,30 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <nav class="navbar navbar-inverse navbar-fixew-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">タイトル</a>
-        </div>      
-        <div class="collapse navbar-collapse" id="navbarEexample1">
+    <div class='body_wrapper'>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Photodia</a>
+          </div>
           <ul class="nav navbar-nav">
-            <li><a href="#">メニューＡ</a></li>
-            <li class="active"><a href="#">メニューＢ</a></li>
-            <li><a href="#">メニューＣ</a></li>
+            <li class="active"><a href="#">投稿一覧</a></li>
+            <li><a href="#">投稿</a></li>
+            <li><a href="#">お気に入り</a></li>
+            <li><a href="#">ギャラリー</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
         </div>
-      </div>
-    </nav>
-    <%= yield %>
-    <footer>
-      <div class='footer'>
-        <p class='copyright'></p>
-      </div>
-    </footer>
+      </nav>
+      <%= yield %>
+      <footer>
+        <div class='footer'>
+          <p class='copyright'>ssss</p>
+        </div>
+      </footer>
+    </div>   
   </body>
 </html>
