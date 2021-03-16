@@ -16,15 +16,15 @@ p {
 }
 label {
   color: #fff;
-  margin: 10px 10px;
+}
+td {
+  padding: 15px;
 }
 .page_title {
   margin-top: 10%;
 }
 .btn.btn-warning {
   text-shadow: 1px 1px rgb(48, 47, 47);
-}
-.button_area {
   margin-top: 40px;
 }
 .button_margin {
@@ -85,4 +85,13 @@ footer div {
 footer p {
   font-size: 1.5rem;
   text-shadow: 2px 2px #a4b0b9;
+}
+#error_explanation {
+  width: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 10px auto;
+  color: red;
 }
