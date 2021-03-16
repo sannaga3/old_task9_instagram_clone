@@ -18,14 +18,15 @@ label {
   color: #fff;
 }
 td {
-  padding: 15px;
+  padding: 15px 0px 15px 0;
+  width: 200px;
 }
 .page_title {
-  padding-top: 8%;
+  padding-top: 6%;
 }
 .btn.btn-warning {
   text-shadow: 1px 1px rgb(48, 47, 47);
-  margin-top: 40px;
+  margin-top: 60px;
 }
 .side_margin {
   margin: 0 20px;
@@ -54,7 +55,7 @@ td {
 .add_profile_layout {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 .main_wrapper {
@@ -64,12 +65,22 @@ td {
   margin-bottom: 20px;
 }
 .slide_left {
-  width: 70%;
+  width: 60%;
   height: 100%;
 }
 .slide_light {
-  width: 30%;
+  width: 40%;
   height: 100%;
+}
+.image_area {
+  width: 250px;
+  height: 250px;
+  margin-right: 20%;
+  padding-bottom: 30%;
+}
+.image_locate{
+  width: 150px;
+  height: 150px;
 }
 .non_image {
   font-size: 1.5rem;
@@ -95,11 +106,6 @@ h3 {
   justify-content: center;
   align-items: center;
   padding-top: 30px;
-}
-.button_area {
-  width: 300px;
-  height: 50px;
-  padding: 0 10px;
 }
 .footer {
   width: 100%;

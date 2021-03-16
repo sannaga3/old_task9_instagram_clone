@@ -1,7 +1,9 @@
-<div class='add_profile_layout'>
-  <div class="main_wrapper slide_left">
+<div class="main_wrapper">
+  <div>
     <h3 class='page_title'>プロフィール</h3>
-    <div class="table_wrapper">
+  </div>
+  <div class='add_profile_layout'>
+    <div class="table_wrapper slide_left">
       <table>
         <tbody>
           <tr>
@@ -20,14 +22,21 @@
             <td><p>パスワード確認用 : </p></td>
             <td><p>＊＊＊＊＊＊＊＊</p></td>
           </tr>
-          <tr>
-            <td class="button"><%= link_to "投稿", new_picture_path, class: "btn btn-warning side_margin" %></td>
-            <td class="button"><%= link_to "編集", edit_user_path(@user.id), class: "btn btn-warning side_margin" %></td>
-            <td class="button"><%= link_to '退会', user_path(@user.id), method: :delete, data: { confirm: '本当に退会しますか？'}, class: "btn btn-warning side_margin" %></td>
-          </tr>
         </tbody>
       </table>
+      <div class='button_area'>
+        <%= link_to "投稿", new_user_path, class: "btn btn-warning side_margin" %>
+        <%= link_to "編集", edit_user_path(@user.id), class: "btn btn-warning side_margin" %>
+        <%= link_to '退会', user_path(@user.id), method: :delete, data: { confirm: '本当に退会しますか？'}, class: "btn btn-warning side_margin" %>
+      </div>
+    </div>
+    <div class='slide_light'>
+      <div class="image_area">
+        <p>プロフィール画像</p>
+        <% if @user.image? %>
+          <%= image_tag @user.image.url %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <%= render 'profile_image' %>
-</div>
+</div> 

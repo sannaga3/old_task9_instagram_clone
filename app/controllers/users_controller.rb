@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :show, :update,:destroy]
   
   def new
-    @user = User.new
+    if params[:back]
+      @user = User.new(user_params)
+    else
+      @user = User.new
+    end
   end
   
   def confirm
@@ -54,6 +58,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :image, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :image, :image_cache, :password, :password_confirmation)
   end
 end
