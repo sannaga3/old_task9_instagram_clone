@@ -29,15 +29,5 @@
       </table>
     </div>
   </div>
-  <div class='slide_light'>
-    <p>プロフィール画像</p>
-    <% if @user.image? %>
-      <p>Image: </p>
-      <%= image_tag @user.image.url %>
-    <% else %>
-      <div class='non_image'>
-        <p>profile_image</p>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'profile_image' %>
 </div>

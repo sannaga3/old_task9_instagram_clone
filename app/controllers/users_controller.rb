@@ -30,7 +30,21 @@ class UsersController < ApplicationController
   end
 
   def show
+  end
 
+  def edit
+  end
+
+  def update
+    if params[:back]
+      render :edit
+    else
+      if @user.update(user_params)
+        redirect_to user_path(@user.id), notice: "ユーザー編集完了しました！"
+      else
+        render :edit
+      end
+    end
   end
 
   private
@@ -38,7 +52,7 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-  
+
   def user_params
     params.require(:user).permit(:name, :email, :image, :password, :password_confirmation)
   end

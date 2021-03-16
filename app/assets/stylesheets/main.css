@@ -28,7 +28,7 @@ td {
   margin-top: 40px;
 }
 .side_margin {
-  margin: 0 10px;
+  margin: 0 20px;
 }
 .body_wrapper {
   min-height: 100vh;
@@ -65,9 +65,11 @@ td {
 }
 .slide_left {
   width: 70%;
+  height: 100%;
 }
 .slide_light {
   width: 30%;
+  height: 100%;
 }
 .non_image {
   font-size: 1.5rem;
@@ -93,6 +95,11 @@ h3 {
   justify-content: center;
   align-items: center;
   padding-top: 30px;
+}
+.button_area {
+  width: 300px;
+  height: 50px;
+  padding: 0 10px;
 }
 .footer {
   width: 100%;

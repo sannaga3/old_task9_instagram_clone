@@ -1,36 +1,43 @@
-<div class="main_wrapper">
-  <div class='page_title'>
-    <h3>入力内容確認</h3>
-  </div>
-  <%= form_with(model: @user, local: true, url: confirm_id, method: confirm_request) do |f| %>
-    <div class="table_wrapper">
-      <table>
-        <tbody>
-          <tr>
-            <td><p>名前:</p></td>
-            <td><%= @user.name %></td>
-          </tr>
-            <td><p>メールアドレス:</p></td>
-            <td><%= @user.email %></td>
-          <tr>
-          </tr>
-            <td><p>パスワード : </p></td>
-            <td><p>＊＊＊＊＊＊＊＊</p></td>
-          <tr>
-          </tr>
-            <td><p>パスワード確認用 : </p></td>
-            <td><p>＊＊＊＊＊＊＊＊</p></td>
-          <tr>
-          <tr>
-            <td class="button"><%= f.submit "登録する", class: "btn btn-warning top_margin" %></td>      
-            <td class="button"><%= f.submit "戻る", name: 'back', class: "btn btn-warning top_margin" %></td>
-          </tr>
-        </tbody>
-      </table>
-      <%= f.hidden_field :name %>
-      <%= f.hidden_field :email %>
-      <%= f.hidden_field :password %>
-      <%= f.hidden_field :password_confirmation %>
+<div class='add_profile_layout'>
+  <div class="main_wrapper slide_left">
+    <div class='page_title'>
+      <h3>入力内容確認</h3>
     </div>
-  <% end %>
+    <%= form_with(model: @user, local: true, url: confirm_id, method: confirm_request) do |f| %>
+      <div class="table_wrapper">
+        <table>
+          <tbody>
+            <tr>
+              <td><p>名前:</p></td>
+              <td><p><%= @user.name %></p></td>
+            </tr>
+              <td><p>メールアドレス:</p></td>
+              <td><p><%= @user.email %></p></td>
+            <tr>
+            </tr>
+              <td><p>パスワード : </p></td>
+              <td><p>＊＊＊＊＊＊＊＊</p></td>
+            <tr>
+            </tr>
+              <td><p>パスワード確認用 : </p></td>
+              <td><p>＊＊＊＊＊＊＊＊</p></td>
+            <tr>
+            <tr>
+              <% if @user.id? %>
+                <td class="button"><%= f.submit "編集する", class: "btn btn-warning top_margin" %></td>      
+              <% else %>
+                <td class="button"><%= f.submit "登録する", class: "btn btn-warning top_margin" %></td>      
+              <% end %>
+              <td class="button"><%= f.submit "戻る", name: 'back', class: "btn btn-warning top_margin" %></td>
+            </tr>
+          </tbody>
+        </table>
+        <%= f.hidden_field :name %>
+        <%= f.hidden_field :email %>
+        <%= f.hidden_field :password %>
+        <%= f.hidden_field :password_confirmation %>
+      </div>
+    <% end %>
+  </div>
+  <%= render 'profile_image' %>
 </div>
