@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
-      redirect_to user_path(user.id), success: 'ログインに成功しました'  
+      redirect_to user_path(user.id), success: 'ログインにしました'  
     else
       render :new, success: 'ログインに失敗しました'
     end
