@@ -1,0 +1,26 @@
+<div class="main_wrapper">
+  <div class='page_title'>
+    <h3>ログイン</h3>
+  </div>
+  <%= form_with(scope: :session, local: true, url: sessions_path) do |f| %>
+    <div class='add_profile_layout'>
+      <div class="table_wrapper slide_left">
+        <table>
+          <tbody>
+            <tr>
+              <td><%= f.label :"メールアドレス" %></td>
+              <td><%= f.email_field :email %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :"パスワード"%></td>
+              <td><%= f.password_field :password %></td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <%= f.submit "ログイン", class: "btn btn-warning button_middle" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

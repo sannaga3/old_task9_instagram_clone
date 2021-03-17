@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :show, :update,:destroy]
-  
+  skip_before_action :login_required, only: [:new, :create]
   def new
     if params[:back]
       @user = User.new(user_params)
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
       render :edit
     else
       if @user.update(user_params)
-        redirect_to user_path(@user.id), notice: "ユーザー編集完了しました！"
+        redirect_to user_path(@user.id), notice: "プロフィール編集しました！"
       else
         render :edit
       end

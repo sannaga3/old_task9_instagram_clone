@@ -4,7 +4,6 @@
     <title>Photodia</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -15,18 +14,41 @@
           <div class="navbar-header">
             <a class="navbar-brand" href="#">Photodia</a>
           </div>
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">投稿一覧</a></li>
-            <li><a href="#">投稿</a></li>
-            <li><a href="#">お気に入り</a></li>
-            <li><a href="#">ギャラリー</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          </ul>
+          <% if logged_in? %>  
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">投稿一覧</a></li>
+              <li><a href="#">投稿</a></li>
+              <li><a href="#">お気に入り</a></li>
+              <li><a href="#">ギャラリー</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <%= link_to session_path(current_user.id), { method: :delete, data: {confirm: "ログアウトしますか？"}} do %>
+                  <span class="glyphicon glyphicon-log-in"></span> Logout
+                <% end %>
+              </li>  
+            </ul>
+            <% else %>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <%= link_to new_session_path, class: 'post' do %>
+                    <span class="glyphicon glyphicon-log-in"></span> Login
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_path, class: 'post' do %>
+                    <span class="glyphicon glyphicon-log-in"></span> SignUp
+                  <% end %>
+                </li>
+              </ul>
+          <% end %>
         </div>
       </nav>
+      <div class="flash_message">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "#{key} bg-success") %>
+        <% end %>
+      </div>
       <%= yield %>
       <footer>
         <div class='footer'>

@@ -2,9 +2,9 @@
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
     <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>
@@ -45,11 +45,6 @@
           <%= f.file_field :image %>
           <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
           <%= f.hidden_field :image_cache %>
-          <% if !@user.image? %>
-            <div class='non_image'>
-              <p>non_image</p>
-            </div>
-          <% end %>
         </div>
       </div>
     <% end %>
