@@ -21,7 +21,7 @@ class PicturesController < ApplicationController
       render :new if @picture.invalid?
     end
   end
-
+  
   def create
     @picture = current_user.pictures.build(picture_params)
     if params[:back]
