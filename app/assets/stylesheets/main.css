@@ -40,6 +40,9 @@ td {
 .bottom_padding {
   padding-bottom: 15px;
 }
+.top_padding {
+  margin-top: 5px;
+}
 .body_wrapper {
   min-height: 100vh;
   position: relative;

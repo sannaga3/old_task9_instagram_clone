@@ -12,18 +12,21 @@
           <p> 名前 : <%= @picture.user.name %></p>
         </div>
         <div class="container_comment">
-            <p> コメント : <%= @picture.content %></p>
+        <div class="overflow-wrap top_padding"> コメント : <%= (@picture.content) %></div>
             <%= f.hidden_field :content %>
         </div>
         <div class="picture_container bottom_padding">
-          <div>
-            <p class="picture_tag">picture</p>
+          <div class="picture_content">
+            <p class="picture_tag">
+              <% if !@picture.post_image.url %>
+                <p class="picture_tag">picture : 変更なし</p>
+              <% else %>
+                <p class="picture_tag">picture</p>
+              <% end %>
+            </p>
             <%= f.hidden_field :post_image_cache %>
             <%= f.hidden_field :post_image %>
             <%= image_tag(@picture.post_image.url) if @picture.post_image && @picture.post_image.url %>
-            <% if !@picture.post_image.url %>
-              <p class="picture_tag">変更なし</p>
-            <% end %>
           </div>
           <div class="bottom_padding">
             <% if @picture.id %>
