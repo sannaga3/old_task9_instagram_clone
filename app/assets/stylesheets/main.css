@@ -31,6 +31,9 @@ td {
 .side_margin {
   margin: 0 20px;
 }
+.left_margin{
+  margin-left: 30px;
+}
 .body_wrapper {
   min-height: 100vh;
   position: relative;
@@ -51,12 +54,6 @@ td {
 }
 .nav.navbar-nav li a {
   color: #fff;
-}
-.add_profile_layout {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 .main_wrapper {
   width: 100%;
@@ -82,30 +79,9 @@ td {
   width: 150px;
   height: 150px;
 }
-.non_image {
-  font-size: 1.5rem;
-  width: 150px;
-  height: 150px;
-  border-radius: 10px;
-  border: 4px solid rgb(158, 155, 128);
-  background: rgb(194, 188, 165);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  text-decoration: underline #fff;
-}
 h3 {
   font-size: 3rem;
   text-align: center;
-}
-.table_wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 30px;
 }
 .footer {
   width: 100%;

@@ -1,0 +1,27 @@
+.add_profile_layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.table_wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+}
+.non_image {
+  font-size: 1.5rem;
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  border: 4px solid rgb(158, 155, 128);
+  background: rgb(194, 188, 165);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: underline #fff;
+}

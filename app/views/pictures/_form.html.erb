@@ -1,0 +1,33 @@
+<% if @picture.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @picture.errors.count %>件のエラーがあります。</h2>
+    <ul>
+      <% @picture.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with(model: @picture, local: true ,url: pictures_path) do |f| %>
+  <div class="content_wrapper">
+    <div class="float">
+      <div class="content_area">
+        <div class="comment_area">
+          <p class="comment_label left_margin"><%= f.label :'コメント' %></p>
+          <%= f.text_area :content, class: 'comment left_margin' %>
+        </div>
+        <div class="image_area_picture">
+          <%= f.file_field :post_image %>
+          <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+          <%= f.hidden_field :post_image_cache %>
+        </div>
+      </div>
+      <div class="button">
+        <%= f.submit "入力内容確認", class: "btn btn-warning side_margin" %>
+        <%= link_to "一覧に戻る", pictures_path, class: "btn btn-warning side_margin" %>
+      </div>
+      <%= f.hidden_field :user %>
+    </div>
+    
+  </div>
+<% end %>
