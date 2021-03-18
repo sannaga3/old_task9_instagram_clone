@@ -1,31 +1,43 @@
-<div class="main_wrapper">
-  <div class='page_title'>
-    <h3>内容確認</h3>
-  </div>
-  <%= form_with(model: @picture, local: true ,url: confirm_id_picture, method: confirm_request_picture) do |f| %>
-    <div class="content_wrapper">
-      <div class="float">
-        <div class="content_area">
-          <div class="comment_area">
+<div class='page_title bottom_margin'>
+  <h3>内容確認</h3>
+</div>
+<%= form_with(model: @picture, local: true ,url: confirm_id_picture, method: confirm_request_picture) do |f| %>
+  <div class="contents_wrapper">
+    <div class='contents_container'>
+      <div class="container_image">
+        <p>profile_image</p>
+      </div>
+      <div class="container_remove_image">
+        <div class="container_name">
+          <p> 名前 : <%= @picture.user.name %></p>
+        </div>
+        <div class="container_comment">
+            <p> コメント : <%= @picture.content %></p>
+            <%= f.hidden_field :content %>
+        </div>
+        <div class="picture_container bottom_padding">
+          <div>
+            <p class="picture_tag">picture</p>
+            <%= f.hidden_field :post_image_cache %>
+            <%= f.hidden_field :post_image %>
+            <%= image_tag(@picture.post_image.url) if @picture.post_image && @picture.post_image.url %>
+            <% if !@picture.post_image.url %>
+              <p class="picture_tag">変更なし</p>
+            <% end %>
+          </div>
+          <div class="bottom_padding">
             <% if @picture.id %>
               <p>投稿番号 : <%= @picture.id %></p> 
             <% end %>
-            <p class="comment_label left_margin"><%= f.label :'コメント:' %></p>
-            <p class="comment left_margin"><%= @picture.content %></p>
-            <%= f.hidden_field :content %>
-            <%= f.hidden_field :user %>
-          </div>
-          <div class="image_area_picture">
-            <%= image_tag(@picture.post_image.url) if @picture.post_image && @picture.post_image.url %>
-            <%= f.hidden_field :post_image_cache %>
           </div>
         </div>
-        <div>
-          <%= f.submit "送信", class: "btn btn-warning side_margin" %>
-          <%= f.submit "戻る", class: "btn btn-warning side_margin", name: 'back' %>
-          <%= link_to "一覧に戻る", pictures_path, class: "btn btn-warning side_margin" %>
-        </div>
-      </div>    
+      </div>
     </div>
-  <% end %>
-</div>
+    <div class="float">
+      <%= f.submit "送信", class: "btn btn-warning side_margin" %>
+      <%= f.submit "戻る", class: "btn btn-warning side_margin", name: 'back' %>
+      <%= link_to "一覧に戻る", pictures_path, class: "btn btn-warning side_margin" %>
+    </div>
+    <%= f.hidden_field :user %>   
+  </div>
+<% end %>

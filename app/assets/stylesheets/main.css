@@ -37,6 +37,9 @@ td {
 .bottom_margin {
   margin-bottom: 30px;
 }
+.bottom_padding {
+  padding-bottom: 15px;
+}
 .body_wrapper {
   min-height: 100vh;
   position: relative;

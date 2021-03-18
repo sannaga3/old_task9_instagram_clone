@@ -18,13 +18,22 @@
               <p> コメント : <%= p.content %></p>
             </div>
             <div class="picture_container">
-              <% if p.post_image.url %> 
-                <p class="picture_tag">picture</p>
-                <%= image_tag p.post_image.url, class: "picture" if p.post_image? %>
-              <% end %>
+              <div>
+                <% if p.post_image.url %> 
+                  <p class="picture_tag">picture</p>
+                  <%= image_tag p.post_image.url, class: "picture" if p.post_image? %>
+                <% end %>
+              </div>
+              <div>
+                <p><%= p.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+              </div>
             </div>
             <div class="button_container">
-              <p>detail_and_created_at</p>
+              <% if p.user == current_user %>
+                <%= link_to "詳細", picture_path(p.id), class: "select_button" %>
+                <%= link_to "編集", edit_picture_path(p.id), class: "select_button" %>
+                <%= link_to "削除", picture_path(p.id), method: :delete, data: { confirm: '本当に削除しますか？'}, class: "select_button" %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -32,7 +41,7 @@
     </div>
   </div>
 </div>
-
+<%= link_to "投稿する", new_picture_path, class: "fixed_button" %>
 
 
 
