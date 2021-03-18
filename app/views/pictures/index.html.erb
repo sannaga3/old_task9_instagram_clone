@@ -21,9 +21,9 @@
           </div>
           <div class="container_post_image"> 
             <div>
-              <% if p.image.url %> 
+              <% if p.post_image.url %> 
                 <p class="picture_tag">picture</p>
-                <%= image_tag p.image.url, class: "picture" if p.image? %>
+                <%= image_tag p.post_image.url, class: "picture" if p.post_image? %>
               <% end %>
             </div>
             <div class="links_container">

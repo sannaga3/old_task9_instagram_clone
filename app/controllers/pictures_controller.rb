@@ -23,6 +23,16 @@ class PicturesController < ApplicationController
   end
 
   def create
+    @picture = current_user.pictures.build(picture_params)
+    if params[:back]
+      render :new
+    else
+      if @picture.save
+        redirect_to pictures_path, notice: "投稿しました"
+      else
+        render :new
+      end
+    end
   end
 
   def show

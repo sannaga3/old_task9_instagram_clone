@@ -18,7 +18,7 @@
         </div>
         <div class="image_area_picture">
           <%= f.file_field :post_image %>
-          <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+          <%= image_tag(@picture.post_image.url) if @picture.post_image && @picture.post_image.url %>
           <%= f.hidden_field :post_image_cache %>
         </div>
       </div>
