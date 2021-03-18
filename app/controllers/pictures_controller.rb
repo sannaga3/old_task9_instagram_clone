@@ -1,4 +1,6 @@
 class PicturesController < ApplicationController
+  before_action :set_picture, only: [:edit, :show, :update,:destroy]
+  
   def index
     @pictures = Picture.all
   end
@@ -21,7 +23,7 @@ class PicturesController < ApplicationController
       render :new if @picture.invalid?
     end
   end
-  
+
   def create
     @picture = current_user.pictures.build(picture_params)
     if params[:back]
@@ -48,6 +50,10 @@ class PicturesController < ApplicationController
   end
 
   private
+  def set_picture
+    @picture = Picture.find(params[:id])
+  end
+
   def picture_params
     params.require(:picture).permit(:content, :id, :post_image, :post_image_cache, :image, :image_cache)
   end
