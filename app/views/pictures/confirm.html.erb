@@ -1,0 +1,22 @@
+<%= form_with(model: @picture, local: true ,url: pictures_path) do |f| %>
+  <div class="content_wrapper">
+    <div class="float">
+      <div class="content_area">
+        <div class="comment_area">
+          <p class="comment_label left_margin"><%= f.label :'コメント' %></p>
+          <p>コメント : <%= @picture.content, class: 'comment left_margin' %></p>
+          <%= f.hidden_field :content %>
+        </div>
+        <div class="image_area_picture">
+          <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+          <%= f.hidden_field :post_image_cache %>
+        </div>
+      </div>
+      <div class="button">
+        <%= f.submit "入力内容確認", class: "btn btn-warning side_margin" %>
+        <%= link_to "一覧に戻る", pictures_path, class: "btn btn-warning side_margin" %>
+      </div>
+      <%= f.hidden_field :user %>
+    </div>    
+  </div>
+<% end %>
