@@ -51,6 +51,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    redirect_to new_user_path, notice: "ご利用ありがとうございました！登録情報を削除しました！"
+  end
+
   private
 
   def set_user
