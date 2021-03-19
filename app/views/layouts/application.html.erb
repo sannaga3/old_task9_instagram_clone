@@ -18,8 +18,7 @@
             <ul class="nav navbar-nav">
               <li class="active"><%= link_to "投稿一覧", pictures_path %></li>
               <li><%= link_to "投稿", new_picture_path %></li>
-              <li><a href="#">お気に入り</a></li>
-              <li><a href="#">ギャラリー</a></li>
+              <li><%= link_to "お気に入り", gallery_users_path %></li>
               <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

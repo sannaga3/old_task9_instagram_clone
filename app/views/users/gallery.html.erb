@@ -1,0 +1,45 @@
+<div class="main_wrapper">
+  <div class="title_wrapper">
+    <div>
+      <div class='page_title'>
+      <h3>お気に入り一覧</h3>
+    </div>
+    <div class="contents_wrapper">
+      <% @favorite_list.each do |p| %>
+        <div class='contents_container'>
+          <div class="container_image">
+            <%= image_tag p.user.image.thumb.url %>
+          </div>
+          <div class="container_remove_image">
+            <div class="container_name">
+              <p> 名前 : <%= p.user.name %></p>
+            </div>
+            <div class="container_comment">
+              <div class="overflow-wrap"> コメント : <%= p.content %></div>
+            </div>
+            <div class="picture_container bottom_padding">
+              <div>
+                <% if p.post_image.url %> 
+                  <p class="picture_tag">picture</p>
+                  <%= image_tag p.post_image.url, class: "picture" if p.post_image? %>
+                <% end %>
+              </div>
+              <div class="comment_box">
+                <p><%= p.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+              </div>
+            </div>
+            <div class="button_container">
+              <%= link_to "詳細", picture_path(p.id), class: "select_button" %>
+              <% if p.user == current_user %>
+                <%= link_to "編集", edit_picture_path(p.id), class: "select_button" %>
+                <%= link_to "削除", picture_path(p.id), method: :delete, data: { confirm: '本当に削除しますか？'}, class: "select_button" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %> 
+    </div>
+  </div>
+</div>
+<%= link_to "戻る", user_path(current_user.id), class: "fixed_button" %>
+

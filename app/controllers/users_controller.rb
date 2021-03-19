@@ -58,6 +58,12 @@ class UsersController < ApplicationController
     redirect_to new_user_path, notice: "ご利用ありがとうございました！登録情報を削除しました！"
   end
 
+  def gallery
+    @user = current_user
+    favorites = Favorite.where(user_id: current_user.id).pluck(:picture_id)
+    @favorite_list = Picture.find(favorites) 
+  end
+  
   private
   def set_user
     @user = User.find(params[:id])
