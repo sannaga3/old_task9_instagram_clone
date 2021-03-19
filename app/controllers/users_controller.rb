@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :show, :update, :destroy]
-  skip_before_action :login_required, only: [:new, :create]
+  before_action :ensure_current_user, only: [:edit, :update, :destroy]
+
   def new
     if params[:back]
       @user = User.new(user_params)
@@ -34,6 +35,7 @@ class UsersController < ApplicationController
   end
 
   def show
+  
   end
 
   def edit
@@ -57,12 +59,17 @@ class UsersController < ApplicationController
   end
 
   private
-
   def set_user
     @user = User.find(params[:id])
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :image, :image_cache, :password, :password_confirmation)
+    params.require(:user).permit(:id, :name, :email, :image, :image_cache, :password, :password_confirmation)
+  end
+
+  def ensure_current_user
+    if current_user.id != @user.id
+      redirect_to user_path(current_user.id), warning: "権限がありません"
+    end
   end
 end
