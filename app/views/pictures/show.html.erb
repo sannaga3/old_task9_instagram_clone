@@ -21,16 +21,23 @@
           <% end %>
         </div>
         <div class="bottom_padding">
+          <% unless @picture.user_id == current_user.id %>
+            <% if @favorite.present? %>
+              <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-warning' %>
+            <% else %>
+              <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-warning' %>
+            <% end %>
+          <% end %>
           <p><%= @picture.created_at.strftime("%Y-%m-%d %H:%M") %></p>
       </div>
       </div>
     </div>
   </div>
-  <% if @picture.user_id == @current_user.id %>
-    <div class="float">
-      <%= link_to "編集", edit_picture_path(@picture.id), class: "btn btn-warning side_margin" %>
-      <%= link_to "一覧に戻る", pictures_path, class: "btn btn-warning side_margin" %>
-      <%= link_to "削除", picture_path(@picture.id), method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-warning side_margin" %>
-    </div>
-  <% end %>
+  <div class="float">
+    <%= link_to "一覧に戻る", pictures_path, class: "btn btn-warning side_margin" %>
+      <% if @picture.user_id == @current_user.id %>
+        <%= link_to "編集", edit_picture_path(@picture.id), class: "btn btn-warning side_margin" %>
+        <%= link_to "削除", picture_path(@picture.id), method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-warning side_margin" %>
+      <% end %>
+  </div>
 </div>
