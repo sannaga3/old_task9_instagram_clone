@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  <% if @picture.user_id = @current_user.id %>
+  <% if @picture.user_id == @current_user.id %>
     <div class="float">
       <%= link_to "編集", edit_picture_path(@picture.id), class: "btn btn-warning side_margin" %>
       <%= link_to "一覧に戻る", pictures_path, class: "btn btn-warning side_margin" %>

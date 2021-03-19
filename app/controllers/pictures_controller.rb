@@ -76,7 +76,7 @@ class PicturesController < ApplicationController
   end
   def ensure_current_user
     if @current_user.id != @picture.user_id
-      redirect_to pictures_path, warning: "権限がありません"
+      redirect_to pictures_path, notice: "権限がありません"
     end
   end
 end
