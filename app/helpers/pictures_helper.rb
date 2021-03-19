@@ -14,6 +14,6 @@ module PicturesHelper
     end
   end
   def confirm_request_picture
-    @picture.id ? 'patch' : 'po sst'
+    @picture.id ? 'patch' : 'post'
   end
 end

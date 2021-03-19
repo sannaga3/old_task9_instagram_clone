@@ -8,7 +8,7 @@
       <% @pictures.each do |p| %>
         <div class='contents_container'>
           <div class="container_image">
-            <p>profile_image</p>
+            <%= image_tag p.user.image.thumb.url %>
           </div>
           <div class="container_remove_image">
             <div class="container_name">
