@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :show, :update, :destroy]
+  skip_before_action :login_required, only: [:new, :create, :confirm]
   before_action :ensure_current_user, only: [:edit, :update, :destroy]
 
   def new

@@ -25,14 +25,12 @@
           </tbody>
         </table>
         <div>
-          <% if current_user.id == @user.id %>
-            <% if @user.id? %>
-              <%= f.submit "編集する", class: "btn btn-warning side_margin" %>
-            <% else %>
-              <%= f.submit "登録する", class: "btn btn-warning side_margin" %>
-            <% end %>
-            <%= f.submit "戻る", name: 'back', class: "btn btn-warning side_margin" %>
+          <% if @user.id? %>
+            <%= f.submit "編集する", class: "btn btn-warning side_margin" %>
+          <% else %>
+            <%= f.submit "登録する", class: "btn btn-warning side_margin" %>
           <% end %>
+          <%= f.submit "戻る", name: 'back', class: "btn btn-warning side_margin" %>
         </div>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :email %>

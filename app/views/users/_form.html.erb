@@ -32,11 +32,9 @@
         </tbody>
       </table>
       <div>
-        <% if current_user.id = @user.id %>
-          <%= f.submit "入力内容確認", class: "btn btn-warning #{'side_margin' if @user.id?} #{'button_middle' if !@user.id?}" %>
-          <% if @user.id? %>
-            <%= link_to '戻る', user_path(@user.id), class: "btn btn-warning side_margin" %>
-          <% end %>
+        <%= f.submit "入力内容確認", class: "btn btn-warning #{'side_margin' if @user.id?} #{'button_middle' if !@user.id?}" %>
+        <% if @user.id? %>
+          <%= link_to '戻る', user_path(@user.id), class: "btn btn-warning side_margin" %>
         <% end %>
       </div>
     </div>
