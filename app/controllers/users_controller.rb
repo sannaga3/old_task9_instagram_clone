@@ -65,6 +65,12 @@ class UsersController < ApplicationController
     @favorite_list = Picture.find(favorites) 
   end
   
+  def gallery_list
+    @user = current_user
+    favorites = Favorite.where(user_id: current_user.id).pluck(:picture_id)
+    @favorite_list = Picture.find(favorites) 
+  end
+
   private
   def set_user
     @user = User.find(params[:id])
