@@ -6,6 +6,11 @@
     </div>
     <div class="contents_wrapper">
       <% @pictures.each do |p| %>
+        <% if with_image ="yes" %>
+          <% if !p.user.image.thumb.url %>
+            <% next p %>
+          <% end %>
+        <% end %>
         <div class='contents_container'>
           <% if p.user.image.thumb.url %>
             <div class="container_image">
@@ -47,7 +52,7 @@
     </div>
   </div>
 </div>
-<%= link_to "投稿する", new_picture_path, class: "fixed_button" %>
-
-
+<%= link_to "投稿する", new_picture_path, class: "button_low button_top" %>
+<%= link_to "降順にする", pictures_path, class: "button_low button_middle" , name: 'desc' %>
+<%= link_to "画像付のみ表示", pictures_path, class: "button_low" , name: 'with_image' %>
 
