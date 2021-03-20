@@ -1,7 +1,7 @@
 require 'faker'
 
 50.times do |n|
-  name = Faker::Movies::StarWars.character
+  name = Faker::JapaneseMedia::Doraemon.location #=> "Tokyo"
   email = Faker::Internet.email
   image = nil
   password = "password"
@@ -13,7 +13,7 @@ require 'faker'
 end
 
 50.times do |n|
-content = Faker::Movies::StarWars.quote 
+content = Faker::Games::Pokemon.move
 post_image = nil
 user_id = SecureRandom.random_number(50)
 Picture.create!(content: content,

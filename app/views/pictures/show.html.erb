@@ -4,7 +4,13 @@
 <div class="contents_wrapper">
   <div class='contents_container'>
     <div class="container_image">
-      <%= image_tag @picture.user.image.thumb.url %>
+      <% if @picture.user.image.thumb.url %>
+        <%= image_tag @picture.user.image.thumb.url %>
+      <% else %>
+        <div class="non_image">
+          <p>non_image</p>
+        </div>
+      <% end %>
     </div>
     <div class="container_remove_image">
       <div class="container_name">

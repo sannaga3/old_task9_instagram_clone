@@ -7,9 +7,15 @@
     <div class="contents_wrapper">
       <% @favorite_list.each do |p| %>
         <div class='contents_container'>
-          <div class="container_image">
-            <%= image_tag p.user.image.thumb.url %>
-          </div>
+          <% if p.user.image.thumb.url %>
+            <div class="container_image">
+              <%= image_tag p.user.image.thumb.url %>
+            </div>
+          <% else %>
+            <div class="non_image">
+              <p>non_image</p>
+            </div>
+          <% end %>
           <div class="container_remove_image">
             <div class="container_name">
               <p> 名前 : <%= p.user.name %></p>
