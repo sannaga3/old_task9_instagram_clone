@@ -1,0 +1,46 @@
+<div class='page_title bottom_margin'>
+  <h3>内容確認</h3>
+</div>
+<%= form_with(model: @picture, local: true ,url: confirm_id_picture, method: confirm_request_picture) do |f| %>
+  <div class="contents_wrapper">
+    <div class='contents_container'>
+      <div class="container_image">
+        <%= image_tag @picture.user.image.thumb.url %>
+      </div>
+      <div class="container_remove_image">
+        <div class="container_name">
+          <p> 名前 : <%= @picture.user.name %></p>
+        </div>
+        <div class="container_comment">
+        <div class="overflow-wrap top_padding"> コメント : <%= (@picture.content) %></div>
+            <%= f.hidden_field :content %>
+        </div>
+        <div class="picture_container bottom_padding">
+          <div class="picture_content">
+            <p class="picture_tag">
+              <% if !@picture.post_image.url %>
+                <p class="picture_tag">picture : 変更なし</p>
+              <% else %>
+                <p class="picture_tag">picture</p>
+              <% end %>
+            </p>
+            <%= f.hidden_field :post_image_cache %>
+            <%= f.hidden_field :post_image %>
+            <%= image_tag(@picture.post_image.url) if @picture.post_image && @picture.post_image.url %>
+          </div>
+          <div class="bottom_padding">
+            <% if @picture.id %>
+              <p>投稿番号 : <%= @picture.id %></p> 
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="float">
+      <%= f.submit "送信", class: "btn btn-warning side_margin" %>
+      <%= f.submit "戻る", class: "btn btn-warning side_margin", name: 'back' %>
+      <%= link_to "一覧に戻る", pictures_path, class: "btn btn-warning side_margin" %>
+    </div>
+    <%= f.hidden_field :user %>   
+  </div>
+<% end %>

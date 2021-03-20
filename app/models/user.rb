@@ -11,5 +11,6 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_blank: true, on: :update
   validates :password, presence: true, length: { minimum: 6 }, allow_blank: true, on: :edit_case
   has_many :pictures, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   mount_uploader :image, ImageUploader
 end

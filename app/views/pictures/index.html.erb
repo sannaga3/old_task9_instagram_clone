@@ -1,0 +1,58 @@
+<div class="main_wrapper">
+  <div class="title_wrapper">
+    <div>
+      <div class='page_title'>
+      <h3>投稿一覧ページ</h3>
+    </div>
+    <div class="contents_wrapper">
+      <% @pictures.each do |p| %>
+        <% if with_image ="yes" %>
+          <% if !p.user.image.thumb.url %>
+            <% next p %>
+          <% end %>
+        <% end %>
+        <div class='contents_container'>
+          <% if p.user.image.thumb.url %>
+            <div class="container_image">
+              <%= image_tag p.user.image.thumb.url %>
+            </div>
+          <% else %>
+            <div class="non_image">
+              <p>non_image</p>
+            </div>
+          <% end %>
+          <div class="container_remove_image">
+            <div class="container_name">
+              <p> 名前 : <%= p.user.name %></p>
+            </div>
+            <div class="container_comment">
+              <div class="overflow-wrap"> コメント : <%= p.content %></div>
+            </div>
+            <div class="picture_container bottom_padding">
+              <div>
+                <% if p.post_image.url %> 
+                  <p class="picture_tag">picture</p>
+                  <%= image_tag p.post_image.url, class: "picture" if p.post_image? %>
+                <% end %>
+              </div>
+              <div class="comment_box">
+                <p><%= p.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+              </div>
+            </div>
+            <div class="button_container">
+              <%= link_to "詳細", picture_path(p.id), class: "select_button" %>
+              <% if p.user == current_user %>
+                <%= link_to "編集", edit_picture_path(p.id), class: "select_button" %>
+                <%= link_to "削除", picture_path(p.id), method: :delete, data: { confirm: '本当に削除しますか？'}, class: "select_button" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %> 
+    </div>
+  </div>
+</div>
+<%= link_to "投稿する", new_picture_path, class: "button_low button_top" %>
+<%= link_to "降順にする", pictures_path, class: "button_low button_middle" , name: 'desc' %>
+<%= link_to "画像付のみ表示", pictures_path, class: "button_low" , name: 'with_image' %>
+

@@ -1,0 +1,39 @@
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>	
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.slider').bxSlider({
+          mode: 'fade',
+          auto: true,
+          slideWidth: 600,
+          pause: 6000,
+          auto: true,
+          randomStart: true,
+          autoHover: true,
+          autoControls: true
+      });
+    });
+  </script>
+</head>
+<div class="main_wrapper">
+  <div class="float">
+    <div class="gallery_wrapper">
+      <div>
+        <div class='page_title'>
+          <h3>ギャラリー</h3>
+        </div>
+      </div>
+      <div class="gallery_container">
+        <ul class="slider">
+          <% @favorite_list.each do |p| %>
+            <% if p.post_image.url %>
+                <li><%= image_tag p.post_image.url, class: "picture" if p.post_image? %></li>
+            <% end %>
+          <% end %> 
+        </ul>
+      </div>
+    </div>
+</div>
+<%= link_to "戻る", user_path(current_user.id), class: "fixed_button" %>
