@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post :confirm
       patch :confirm
       get :gallery
+      get :gallery_list
     end
     member do
       patch :confirm
