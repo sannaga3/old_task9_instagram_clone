@@ -30,7 +30,7 @@
   height: 250px;
 }
 .comment {
-  width: 220px;
+  width: 100%;
   height: 120px;
 }
 .title_wrapper{
@@ -107,9 +107,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-}
-.picture_container_without_image {
-
 }
 .picture_content {
   margin: 5px 0 3px 0;
