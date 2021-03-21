@@ -18,13 +18,11 @@
           <% end %>
           <div class="container_remove_image">
             <div class="container_name">
-              <p> 名前 : <%= p.user.name %></p>
+              <p> 名前 ： <%= p.user.name %></p>
             </div>
-            <div class="container_comment">
-              <div class="overflow-wrap"> コメント : <%= p.content %></div>
-            </div>
+            <%= content_tag(:div, content_tag(:div, "コメント：#{p.content}", class: "overflow-wrap"), class: "container_comment #{'container_comment_without_image' if !p.post_image.url}") %>
             <div class="picture_container bottom_padding">
-              <div>
+              <div class="picture_img_area">
                 <% if p.post_image.url %> 
                   <p class="picture_tag">picture</p>
                   <%= image_tag p.post_image.url, class: "picture" if p.post_image? %>
