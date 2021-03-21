@@ -6,11 +6,6 @@
     </div>
     <div class="contents_wrapper">
       <% @pictures.each do |p| %>
-        <% if with_image ="yes" %>
-          <% if !p.user.image.thumb.url %>
-            <% next p %>
-          <% end %>
-        <% end %>
         <div class='contents_container'>
           <% if p.user.image.thumb.url %>
             <div class="container_image">
@@ -35,9 +30,7 @@
                   <%= image_tag p.post_image.url, class: "picture" if p.post_image? %>
                 <% end %>
               </div>
-              <div class="comment_box">
-                <p><%= p.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-              </div>
+              <%= content_tag(:div, content_tag(:p, p.created_at.strftime("%Y-%m-%d %H:%M")), class: "container_day #{'without_image' if !p.post_image.url}") %>
             </div>
             <div class="button_container">
               <%= link_to "詳細", picture_path(p.id), class: "select_button" %>
@@ -53,6 +46,10 @@
   </div>
 </div>
 <%= link_to "投稿する", new_picture_path, class: "button_low button_top" %>
-<%= link_to "降順にする", pictures_path, class: "button_low button_middle" , name: 'desc' %>
-<%= link_to "画像付のみ表示", pictures_path, class: "button_low" , name: 'with_image' %>
+<% if params[:name] == "desc" %>
+  <%= link_to "昇順にする", pictures_path(name: 'asc'), class: "button_low button_middle" %>
+<% else %>
+  <%= link_to "降順にする", pictures_path(name: 'desc'), class: "button_low button_middle" %>
+<% end %>
+<%= link_to "画像付のみ", pictures_path(name: 'with_image'), class: "button_low" %>
 

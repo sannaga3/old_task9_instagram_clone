@@ -4,10 +4,12 @@ class PicturesController < ApplicationController
 
   def index
     @pictures = Picture.all
-    if params[:desc]
-      @pictures = @pictures.order(created_at: :desc)
-    elsif params[:with_image]
-      @pictures = where.not(post_image: nil)
+    if params[:name] == "asc"
+      @pictures = @pictures.order(id: :asc)
+    elsif params[:name] == "desc"
+      @pictures = @pictures.order(id: :desc)
+    elsif params[:name] == "with_image"
+      @pictures = @pictures.where.not(post_image: nil)
     end  
   end
 
