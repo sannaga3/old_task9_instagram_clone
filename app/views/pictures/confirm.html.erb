@@ -4,16 +4,22 @@
 <%= form_with(model: @picture, local: true ,url: confirm_id_picture, method: confirm_request_picture) do |f| %>
   <div class="contents_wrapper">
     <div class='contents_container'>
-      <div class="container_image">
-        <%= image_tag @picture.user.image.thumb.url %>
-      </div>
+      <% if @picture.user.image.thumb.url %>
+        <div class="container_image">
+          <%= image_tag @picture.user.image.thumb.url %>
+        </div>
+      <% else %>
+        <div class="non_image">
+          <p>non_image</p>
+        </div>
+      <% end %>
       <div class="container_remove_image">
         <div class="container_name">
           <p> 名前 : <%= @picture.user.name %></p>
         </div>
         <div class="container_comment">
-        <div class="overflow-wrap top_padding"> コメント：<%= (@picture.content) %></div>
-            <%= f.hidden_field :content %>
+          <div class="overflow-wrap top_padding"> コメント：<%= (@picture.content) %></div>
+          <%= f.hidden_field :content %>
         </div>
         <div class="picture_container bottom_padding">
           <div class="picture_content">
