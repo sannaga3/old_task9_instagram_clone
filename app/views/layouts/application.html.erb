@@ -16,7 +16,7 @@
           </div>
           <% if logged_in? %>  
             <ul class="nav navbar-nav">
-              <li class="active"><%= link_to "投稿一覧", pictures_path %></li>
+              <li><%= link_to "投稿一覧", pictures_path %></li>
               <li><%= link_to "投稿", new_picture_path %></li>
               <li><%= link_to "お気に入り", gallery_users_path %></li>
               <li><%= link_to "ギャラリー", gallery_list_users_path %></li>
@@ -25,7 +25,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li>
                 <%= link_to session_path(current_user.id), { method: :delete, data: {confirm: "ログアウトしますか？"}} do %>
-                  <span class="glyphicon glyphicon-log-in"></span> Logout
+                  Logout
                 <% end %>
               </li>
             </ul>
@@ -33,12 +33,12 @@
               <ul class="nav navbar-nav navbar-right">
                 <li>
                   <%= link_to new_session_path, class: 'post' do %>
-                    <span class="glyphicon glyphicon-log-in"></span> Login
+                    Login
                   <% end %>
                 </li>
                 <li>
                   <%= link_to new_user_path, class: 'post' do %>
-                    <span class="glyphicon glyphicon-log-in"></span> SignUp
+                    SignUp
                   <% end %>
                 </li>
               </ul>
